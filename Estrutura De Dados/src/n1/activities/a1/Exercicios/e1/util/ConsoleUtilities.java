@@ -1,82 +1,115 @@
 package n1.activities.a1.Exercicios.e1.util;
 
+import java.util.Scanner;
+
 public class ConsoleUtilities {
+
 // =========================
-// LIMPEZA / FORMATOS
+// COLORS
 // =========================
+public static final String RESET = "\u001B[0m";
+public static final String RED = "\u001B[31m";
+public static final String GREEN = "\u001B[32m";
+public static final String YELLOW = "\u001B[33m";
+public static final String BLUE = "\u001B[34m";
+public static final String PURPLE = "\u001B[35m";
+public static final String CYAN = "\u001B[36m";
+public static final String WHITE = "\u001B[37m";
 
-// Limpa a tela com 50 linhas em branco
-public static void limparTela() {
-	for (int i = 0; i < 50; i++) System.out.println();
-}
-
-// Imprime uma linha separadora padrão
-public static void linha() {
-	System.out.println("----------------------------------------");
-}
-
-// Imprime linha separadora customizada
-public static void linha(char c, int qtd) {
-	for (int i = 0; i < qtd; i++) System.out.print(c);
-	System.out.println();
-}
-
-// Imprime um título centralizado simples
-public static void titulo(String msg) {
-	linha();
-	System.out.println(" " + msg.toUpperCase());
-	linha();
-}
-
-// Repete uma string N vezes
-public static void repetir(String s, int vezes) {
-	for (int i = 0; i < vezes; i++) System.out.print(s);
-	System.out.println();
-}
 // =========================
-// MENU / INTERAÇÃO
+// PRINT UTILITIES
 // =========================
+public static void printColor(String msg) {
+	printColor(msg, WHITE);
+}
 
-// Mostra um menu simples com opções numeradas
-public static void menu(String... opcoes) {
-	linha();
-	for (int i = 0; i < opcoes.length; i++) {
-		System.out.println((i + 1) + " - " + opcoes[i]);
+public static void printColor(String msg, String color) {
+	System.out.println(color + msg + RESET);
+}
+
+public static void line() {
+	line(WHITE);
+}
+
+public static void line(String color) {
+	System.out.println(color + "----------------------------------------" + RESET);
+}
+
+public static void line(char c, int count) {
+	line(c, count, WHITE);
+}
+
+public static void line(char c, int count, String color) {
+	System.out.print(color);
+	for (int i = 0; i < count; i++) System.out.print(c);
+	System.out.println(RESET);
+}
+
+public static void title(String msg) {
+	title(msg, WHITE);
+}
+
+public static void title(String msg, String color) {
+	line(color);
+	System.out.println(color + " " + msg.toUpperCase() + RESET);
+	line(color);
+}
+
+// =========================
+// MENU
+// =========================
+public static void menu(String... options) {
+	String[] colors = new String[options.length];
+	for (int i = 0; i < colors.length; i++) colors[i] = WHITE;
+	menu(colors, options);
+}
+
+public static void menu(String[] colors, String... options) {
+	if (colors.length != options.length)
+		throw new IllegalArgumentException("Colors array must match options array length.");
+	line();
+	for (int i = 0; i < options.length; i++) {
+		System.out.println(colors[i] + (i + 1) + " - " + options[i] + RESET);
 	}
-	linha();
+	line();
 }
-// =========================
-// CARREGAMENTO / BARRA DE PROGRESSO
-// =========================
 
-// Barra de progresso
-public static void barraProgresso(int progress, int tamanho) {
-	int preenchido = (progress * tamanho) / 100;
+// =========================
+// PROGRESS BAR
+// =========================
+public static void progressBar(int progress, int size) {
+	progressBar(progress, size, GREEN, WHITE);
+}
+
+public static void progressBar(int progress, int size, String fillColor, String emptyColor) {
+	int filled = (progress * size) / 100;
 	System.out.print("[");
-	for (int i = 0; i < tamanho; i++) {
-		if (i < preenchido) System.out.print("#");
-		else System.out.print(" ");
+	for (int i = 0; i < size; i++) {
+		if (i < filled) System.out.print(fillColor + "#" + RESET);
+		else System.out.print(emptyColor + "-" + RESET);
 	}
-	System.out.print("] " + progress + "%\r");
+	System.out.print(" " + progress + "%\r");
 	if (progress == 100) System.out.println();
 }
 
-// Simula carregamento rápido
-public static void carregarSimulado(int duracaoMs) {
-	int passos = 50;
-	int delay = duracaoMs / passos;
-	for (int i = 0; i <= passos; i++) {
-		int progresso = (i * 100) / passos;
-		barraProgresso(progresso, 30);
-		esperar(delay);
+public static void simulatedLoad(int durationMs) {
+	simulatedLoad(durationMs, GREEN, WHITE);
+}
+
+public static void simulatedLoad(int durationMs, String fillColor, String emptyColor) {
+	int steps = 50;
+	int delay = durationMs / steps;
+	for (int i = 0; i <= steps; i++) {
+		int progress = (i * 100) / steps;
+		progressBar(progress, 30, fillColor, emptyColor);
+		waitMs(delay);
 	}
 }
-// =========================
-// UTILITÁRIOS DE TEMPO
-// =========================
 
-// Pausa a execução por X milissegundos
-public static void esperar(int ms) {
+// =========================
+// TIME UTIL
+// =========================
+public static void waitMs(int ms) {
 	try {
 		Thread.sleep(ms);
 	} catch (InterruptedException e) {
@@ -85,18 +118,110 @@ public static void esperar(int ms) {
 }
 
 // =========================
-// CORES SIMPLES NO CONSOLE
+// INPUT UTILITIES
 // =========================
-public static final String RESET = "\u001B[0m";
-public static final String VERMELHO = "\u001B[31m";
-public static final String VERDE = "\u001B[32m";
-public static final String AMARELO = "\u001B[33m";
-public static final String AZUL = "\u001B[34m";
-
-public static void printColor(String msg, String cor) {
-	System.out.println(cor + msg + RESET);
-}
-
+public static class Input {
+	
+	private static final Scanner sc = new Scanner(System.in);
+	
+	// ---------- INTEGER ----------
+	public static int askForInt(String msg) {
+		return askForInt(msg, WHITE);
+	}
+	
+	public static int askForInt(String msg, String color) {
+		while (true) {
+			System.out.print(color + msg + RESET);
+			try {
+				return Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				printColor("Invalid integer. Try again.", RED);
+			}
+		}
+	}
+	
+	public static int askForPositiveInt(String msg) {
+		return askForPositiveInt(msg, WHITE);
+	}
+	
+	public static int askForPositiveInt(String msg, String color) {
+		while (true) {
+			int val = askForInt(msg, color);
+			if (val > 0) return val;
+			printColor("Please enter a positive integer.", RED);
+		}
+	}
+	
+	// ---------- DOUBLE ----------
+	public static double readDouble(String msg) {
+		return readDouble(msg, WHITE);
+	}
+	
+	public static double readDouble(String msg, String color) {
+		while (true) {
+			System.out.print(color + msg + RESET);
+			try {
+				return Double.parseDouble(sc.nextLine().replace(",", "."));
+			} catch (NumberFormatException e) {
+				printColor("Invalid number. Try again.", RED);
+			}
+		}
+	}
+	
+	public static double readPositiveDouble(String msg) {
+		return readPositiveDouble(msg, WHITE);
+	}
+	
+	public static double readPositiveDouble(String msg, String color) {
+		while (true) {
+			double val = readDouble(msg, color);
+			if (val > 0) return val;
+			printColor("Please enter a positive number.", RED);
+		}
+	}
+	
+	// ---------- TEXT ----------
+	public static String readText(String msg) {
+		return readText(msg, WHITE);
+	}
+	
+	public static String readText(String msg, String color) {
+		while (true) {
+			System.out.print(color + msg + RESET);
+			String text = sc.nextLine().trim();
+			if (!text.isEmpty()) return text;
+			printColor("Text cannot be empty. Try again.", RED);
+		}
+	}
+	
+	public static String readName(String msg) {
+		return readName(msg, WHITE);
+	}
+	
+	public static String readName(String msg, String color) {
+		while (true) {
+			System.out.print(color + msg + RESET);
+			String name = sc.nextLine().trim();
+			if (!name.isEmpty() && name.matches("[A-Za-zÀ-ÿ ]+")) return name;
+			printColor("Invalid name. Only letters and spaces allowed.", RED);
+		}
+	}
+	
+	// ---------- YES / NO ----------
+	public static boolean readYesOrNo(String msg) {
+		return readYesOrNo(msg, WHITE);
+	}
+	
+	public static boolean readYesOrNo(String msg, String color) {
+		while (true) {
+			System.out.print(color + msg + " (Y/N): " + RESET);
+			String resp = sc.nextLine().trim().toUpperCase();
+			if (resp.equals("Y")) return true;
+			if (resp.equals("N")) return false;
+			printColor("Invalid response. Enter Y or N.", RED);
+		}
+	}
+	
 }
 
 }
