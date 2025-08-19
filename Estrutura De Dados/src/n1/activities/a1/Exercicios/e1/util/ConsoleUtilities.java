@@ -15,6 +15,10 @@ public static final String BLUE = "\u001B[34m";
 public static final String PURPLE = "\u001B[35m";
 public static final String CYAN = "\u001B[36m";
 public static final String WHITE = "\u001B[37m";
+// =========================
+// INPUT UTILITIES
+// =========================
+private static final Scanner sc = new Scanner(System.in);
 
 // =========================
 // PRINT UTILITIES
@@ -117,111 +121,133 @@ public static void waitMs(int ms) {
 	}
 }
 
+// ---------- INTEGER ----------
+public static int readInt(String msg) {
+	return readInt(msg, WHITE);
+}
+
+public static int readInt(String msg, int min, int max) {
+	return readInt(msg, min, max, WHITE);
+}
+
+public static int readInt(String msg, int min, int max, String color) {
+	while (true) {
+		int val = readInt(msg, color);
+		if (inRange(val, min, max)) return val;
+		printColor("Type a value within range", RED);
+	}
+}
+
+public static int readInt(String msg, String color) {
+	while (true) {
+		System.out.print(color + msg + RESET);
+		try {
+			return Integer.parseInt(sc.nextLine());
+		} catch (NumberFormatException e) {
+			printColor("Invalid integer. Try again.", RED);
+		}
+	}
+}
+
+public static int readPositiveInt(String msg, int min, int max) {
+	return readPositiveInt(msg, min, max, WHITE);
+}
+
+public static int readPositiveInt(String msg, int min, int max, String color) {
+	while (true) {
+		int val = readPositiveInt(msg, color);
+		if (inRange(val, min, max)) return val;
+		printColor("Type a value within range", RED);
+	}
+}
+
+public static int readPositiveInt(String msg) {
+	return readPositiveInt(msg, WHITE);
+}
+
+public static int readPositiveInt(String msg, String color) {
+	while (true) {
+		int val = readInt(msg, color);
+		if (val > 0) return val;
+		printColor("Please enter a positive integer.", RED);
+	}
+}
+
+// ---------- DOUBLE ----------
+public static double readDouble(String msg) {
+	return readDouble(msg, WHITE);
+}
+
+public static double readDouble(String msg, String color) {
+	while (true) {
+		System.out.print(color + msg + RESET);
+		try {
+			return Double.parseDouble(sc.nextLine().replace(",", "."));
+		} catch (NumberFormatException e) {
+			printColor("Invalid number. Try again.", RED);
+		}
+	}
+}
+
+public static double readPositiveDouble(String msg) {
+	return readPositiveDouble(msg, WHITE);
+}
+
+public static double readPositiveDouble(String msg, String color) {
+	while (true) {
+		double val = readDouble(msg, color);
+		if (val > 0) return val;
+		printColor("Please enter a positive number.", RED);
+	}
+}
+
+// ---------- TEXT ----------
+public static String readText(String msg) {
+	return readText(msg, WHITE);
+}
+
+public static String readText(String msg, String color) {
+	while (true) {
+		System.out.print(color + msg + RESET);
+		String text = sc.nextLine().trim();
+		if (!text.isEmpty()) return text;
+		printColor("Text cannot be empty. Try again.", RED);
+	}
+}
+
+public static String readName(String msg) {
+	return readName(msg, WHITE);
+}
+
+public static String readName(String msg, String color) {
+	while (true) {
+		System.out.print(color + msg + RESET);
+		String name = sc.nextLine().trim();
+		if (!name.isEmpty() && name.matches("[A-Za-zÀ-ÿ ]+")) return name;
+		printColor("Invalid name. Only letters and spaces allowed.", RED);
+	}
+}
+
+// ---------- YES / NO ----------
+public static boolean readYesOrNo(String msg) {
+	return readYesOrNo(msg, WHITE);
+}
+
+public static boolean readYesOrNo(String msg, String color) {
+	while (true) {
+		System.out.print(color + msg + " (Y/N): " + RESET);
+		String resp = sc.nextLine().trim().toUpperCase();
+		if (resp.equals("Y")) return true;
+		if (resp.equals("N")) return false;
+		printColor("Invalid response. Enter Y or N.", RED);
+	}
+}
+
 // =========================
-// INPUT UTILITIES
+// HELPER METHODS
 // =========================
-public static class Input {
-	
-	private static final Scanner sc = new Scanner(System.in);
-	
-	// ---------- INTEGER ----------
-	public static int askForInt(String msg) {
-		return askForInt(msg, WHITE);
-	}
-	
-	public static int askForInt(String msg, String color) {
-		while (true) {
-			System.out.print(color + msg + RESET);
-			try {
-				return Integer.parseInt(sc.nextLine());
-			} catch (NumberFormatException e) {
-				printColor("Invalid integer. Try again.", RED);
-			}
-		}
-	}
-	
-	public static int askForPositiveInt(String msg) {
-		return askForPositiveInt(msg, WHITE);
-	}
-	
-	public static int askForPositiveInt(String msg, String color) {
-		while (true) {
-			int val = askForInt(msg, color);
-			if (val > 0) return val;
-			printColor("Please enter a positive integer.", RED);
-		}
-	}
-	
-	// ---------- DOUBLE ----------
-	public static double readDouble(String msg) {
-		return readDouble(msg, WHITE);
-	}
-	
-	public static double readDouble(String msg, String color) {
-		while (true) {
-			System.out.print(color + msg + RESET);
-			try {
-				return Double.parseDouble(sc.nextLine().replace(",", "."));
-			} catch (NumberFormatException e) {
-				printColor("Invalid number. Try again.", RED);
-			}
-		}
-	}
-	
-	public static double readPositiveDouble(String msg) {
-		return readPositiveDouble(msg, WHITE);
-	}
-	
-	public static double readPositiveDouble(String msg, String color) {
-		while (true) {
-			double val = readDouble(msg, color);
-			if (val > 0) return val;
-			printColor("Please enter a positive number.", RED);
-		}
-	}
-	
-	// ---------- TEXT ----------
-	public static String readText(String msg) {
-		return readText(msg, WHITE);
-	}
-	
-	public static String readText(String msg, String color) {
-		while (true) {
-			System.out.print(color + msg + RESET);
-			String text = sc.nextLine().trim();
-			if (!text.isEmpty()) return text;
-			printColor("Text cannot be empty. Try again.", RED);
-		}
-	}
-	
-	public static String readName(String msg) {
-		return readName(msg, WHITE);
-	}
-	
-	public static String readName(String msg, String color) {
-		while (true) {
-			System.out.print(color + msg + RESET);
-			String name = sc.nextLine().trim();
-			if (!name.isEmpty() && name.matches("[A-Za-zÀ-ÿ ]+")) return name;
-			printColor("Invalid name. Only letters and spaces allowed.", RED);
-		}
-	}
-	
-	// ---------- YES / NO ----------
-	public static boolean readYesOrNo(String msg) {
-		return readYesOrNo(msg, WHITE);
-	}
-	
-	public static boolean readYesOrNo(String msg, String color) {
-		while (true) {
-			System.out.print(color + msg + " (Y/N): " + RESET);
-			String resp = sc.nextLine().trim().toUpperCase();
-			if (resp.equals("Y")) return true;
-			if (resp.equals("N")) return false;
-			printColor("Invalid response. Enter Y or N.", RED);
-		}
-	}
-	
+public static boolean inRange(int number, int min, int max) {
+	return number >= min && number <= max;
 }
 
 }
