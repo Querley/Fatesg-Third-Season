@@ -1,4 +1,4 @@
-package n1.activities.a1.Exercicios.e1.util;
+package n1.activities.a1.pessoaExec.util;
 
 import java.util.Scanner;
 
@@ -189,8 +189,42 @@ public static double readDouble(String msg, String color) {
 	}
 }
 
+public static double readDouble(String msg, double min, double max, String color) {
+	while (true) {
+		double val = readDouble(msg, color);
+		if (inRange(val, min, max)) return val;
+		printColor("Type a value within range", RED);
+		
+	}
+}
+
+public static double readDouble(String msg, double min, double max) {
+	while (true) {
+		double val = readDouble(msg, WHITE);
+		if (inRange(val, min, max)) return val;
+		printColor("Type a value within range", RED);
+		
+	}
+}
+
+public static double readPositiveDouble(String msg, double min, double max, String color) {
+	while (true) {
+		double val = readPositiveDouble(msg, color);
+		if (inRange(val, min, max)) return val;
+		printColor("Type a value within range", RED);
+	}
+}
+
 public static double readPositiveDouble(String msg) {
 	return readPositiveDouble(msg, WHITE);
+}
+
+public static double readPositiveDouble(String msg, double min, double max) {
+	while (true) {
+		double val = readPositiveDouble(msg, WHITE);
+		if (inRange(val, min, max)) return val;
+		printColor("Type a value within range", RED);
+	}
 }
 
 public static double readPositiveDouble(String msg, String color) {
@@ -247,6 +281,10 @@ public static boolean readYesOrNo(String msg, String color) {
 // HELPER METHODS
 // =========================
 public static boolean inRange(int number, int min, int max) {
+	return number >= min && number <= max;
+}
+
+public static boolean inRange(double number, double min, double max) {
 	return number >= min && number <= max;
 }
 

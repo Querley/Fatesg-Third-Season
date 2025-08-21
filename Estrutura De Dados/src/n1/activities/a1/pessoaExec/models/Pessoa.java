@@ -1,4 +1,4 @@
-package n1.activities.a1.Exercicios.e1.models;
+package n1.activities.a1.pessoaExec.models;
 
 public class Pessoa {
 
