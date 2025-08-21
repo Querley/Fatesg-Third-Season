@@ -1,4 +1,4 @@
-# Lista 1d de Estruturas de Dados em Java. N1
+# Lista 1 de Estruturas de Dados em Java. N1
 
 Este projeto contém diversos exercícios em Java, abordando **estruturas condicionais**, **repetição**, **vetores** e **matrizes**. Todos os programas foram desenvolvidos de forma **modularizada**, utilizando **atributos privados** e necessitando instanciar a classe para execução.
 
