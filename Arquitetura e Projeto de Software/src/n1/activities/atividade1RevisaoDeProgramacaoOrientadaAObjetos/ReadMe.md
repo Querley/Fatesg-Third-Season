@@ -1,6 +1,7 @@
 # Atividade 1 – Revisão de Programação Orientada a Objetos
 
 Este projeto é um **Sistema de Gestão de Funcionários** desenvolvido em Java, criado para gerenciar colaboradores de uma empresa. Ele permite cadastrar diferentes tipos de funcionários e calcular bônus de acordo com o cargo.
+<img width="880" height="266" alt="image" src="https://github.com/user-attachments/assets/5f68de0d-3ac2-4870-9862-93d636b5a1d3" />
 
 ## Funcionalidades
 
