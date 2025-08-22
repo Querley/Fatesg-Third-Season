@@ -46,8 +46,15 @@ public void exibirInfo() {
 	title(String.valueOf(getClass().getSimpleName()), YELLOW);
 	String msg = "NOME: " + getNome();
 	printColor(msg, CYAN);
-	String salarioMsg = "SALARIO: " + (salario + calcularBonus());
+	line();
+	String salarioMsg = "SALARIO BRUTO: " + salario ;
 	printColor(salarioMsg, CYAN);
+	line();
+	salarioMsg = "BONUS: " + calcularBonus();
+	printColor(salarioMsg, BLUE);
+	line();
+	salarioMsg = "SALARIO: " + (salario + calcularBonus());
+	printColor(salarioMsg, GREEN);
 }
 
 }
