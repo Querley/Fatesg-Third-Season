@@ -2,6 +2,7 @@
 
 Este projeto contém diversos exercícios em Java, abordando **vetores**, **manipulação de arrays** e operações básicas como **soma**, **média**, **maior valor** e **busca de elementos**.  
 Todos os programas foram desenvolvidos de forma **simples e modular**, utilizando as classes de utilitários quando necessário para entrada de dados e cores no console.
+
 <img width="711" height="215" alt="image" src="https://github.com/user-attachments/assets/9b38ffc6-510e-4fa1-83d6-c8f148ad5cbb" />
 
 ---
