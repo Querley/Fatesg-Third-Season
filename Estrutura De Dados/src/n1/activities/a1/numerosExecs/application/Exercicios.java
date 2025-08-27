@@ -1,12 +1,12 @@
 package n1.activities.a1.numerosExecs.application;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static n1.activities.a1.numerosExecs.util.ConsoleUtilities.*;
+import static n1.activities.a1.pessoaExec.util.ConsoleUtilities.*;
+
 public class Exercicios {
 
 // ========================

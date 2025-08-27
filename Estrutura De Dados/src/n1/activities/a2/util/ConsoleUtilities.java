@@ -1,4 +1,4 @@
-package n1.activities.a1.numerosExecs.util;
+package n1.activities.a2.util;
 
 import java.util.Scanner;
 

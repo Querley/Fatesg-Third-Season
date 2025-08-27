@@ -1,4 +1,3 @@
-//CONTINUE FROM LINE 16 and 41;
 package n1.activities.a1.pessoaExec.services;
 
 import n1.activities.a1.pessoaExec.models.Pessoa;
