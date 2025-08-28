@@ -34,23 +34,18 @@ static class Exercise2 {
 	
 	public static void main(String[] args) {
 		//SolucaoModerna
-		String[] nomes = IntStream.range(0, 6).mapToObj(i -> readName("Digite o nome da pessoa " + i + ": ",
-						CYAN))
-				.toArray(String[]::new);
-		IntStream.range(0, nomes.length)
-				.forEach(i -> System.out.println("O nome da pessoa " + i + " é: " + nomes[i]));
+		String[] nomes = java.util.stream.IntStream.range(0, 6)
+    .mapToObj(i -> ConsoleUtilities.readName("Digite o nome da pessoa " + i + ": ", ConsoleUtilities.CYAN))
+    .toArray(String[]::new);
+Arrays.stream(nomes).sorted((a, b) -> -1).forEach(System.out::println);
 		//SolucaoImperativa
 /*
 		String[] nomes = new String[6];
-		int count;
-		for (count = 0; count < 6; count++) {
-			String nome = readName("Digite o nome:", CYAN);
-			nomes[count] = nome;
-		}
-		count = 0;
-		for (String nome : nomes) {
-			System.out.println("O nome da pessoa " + count + " e: " + nome);
-			
+for (int i = 0; i < nomes.length; i++) {
+    nomes[i] = ConsoleUtilities.readName("Digite o nome da pessoa " + i + ": ", ConsoleUtilities.CYAN);
+}
+for (int i = nomes.length - 1; i >= 0; i--) {
+    System.out.println(nomes[i]);
 		}
 */
 	}
