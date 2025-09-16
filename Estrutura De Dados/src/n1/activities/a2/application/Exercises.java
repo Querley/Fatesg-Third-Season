@@ -1,10 +1,11 @@
 package n1.activities.a2.application;
 
+import static n1.activities.a1.pessoaExec.util.ConsoleUtilities.*;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static n1.activities.a1.pessoaExec.util.ConsoleUtilities.*;
 
 public class Exercises {
 
@@ -35,7 +36,7 @@ static class Exercise2 {
 	public static void main(String[] args) {
 		//SolucaoModerna
 		String[] nomes = java.util.stream.IntStream.range(0, 6)
-    .mapToObj(i -> ConsoleUtilities.readName("Digite o nome da pessoa " + i + ": ", ConsoleUtilities.CYAN))
+    .mapToObj(i -> readName("Digite o nome da pessoa " + i + ": ", CYAN))
     .toArray(String[]::new);
 Arrays.stream(nomes).sorted((a, b) -> -1).forEach(System.out::println);
 		//SolucaoImperativa
