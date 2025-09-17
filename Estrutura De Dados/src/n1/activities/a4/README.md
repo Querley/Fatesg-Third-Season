@@ -3,6 +3,8 @@
 
 Este repositório contém exercícios de manipulação de listas (`ArrayList`) em Java, com foco em cadastro e gerenciamento de diferentes tipos de dados.
 
+<img width="638" height="198" alt="image" src="https://github.com/user-attachments/assets/bfbd5a86-1454-46be-94e8-c6bd040ecdba" />
+
 ## Exercícios
 
 1. **Cadastro de Produtos Eletrônicos**
