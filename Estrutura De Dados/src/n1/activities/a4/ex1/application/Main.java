@@ -10,6 +10,7 @@ import static n1.activities.a4.util.ConsoleUtilities.*;
 public class Main {
 
 public static void main(String[] args) {
+	//Cadastro inicial de produtos
 	double n = readDouble("Digite o numero de Produtos na sua Lista:");
 	List<Produto> prodList = new ArrayList<>();
 	for (int i = 0; i < n; i++) {
@@ -20,19 +21,50 @@ public static void main(String[] args) {
 		double preco = readDouble("Digite o preco do Produto:");
 		prodList.add(new Produto(id, name, preco));
 	}
-	
+	//Listagem inicial
+	listProds(prodList);
+// Mudanca de precos
 	int idMudar = readInt("Digite o id do produto cujos dados vc deseja mudar:");
-	if (!inRange(idMudar, 0, n)) {
-	 printColor("Esse id nao existe, digite um valor valido.", RED);}
-	else{
-		for (Produto p: prodList){
-			if (idMudar == p.getId()){
-				printColor(String.valueOf(p), CYAN);
-				double novoPreco = readDouble("Digite o Novo Preco do Produto.");
-				if ( novoPreco <= 999999999)
-				// CONTINUE AQUI.
+	//Verificando se o id consta na lista
+	boolean isPresent = false;
+	while (!isPresent) {
+		idMudar = readInt("Digite o id do produto cujos dados vc deseja mudar:");
+		for (Produto p : prodList) {
+			if (p.getId() == idMudar) {
+				isPresent = true;
+				break;
 			}
 		}
+		if (!isPresent) printColor("Digite um id valido.", RED);
+		
+	}
+	// Mudando o preco
+	for (Produto p : prodList) {
+		if (idMudar == p.getId()) {
+			printColor(String.valueOf(p), CYAN);
+			double novoPreco = -1;
+			while (!inRange(novoPreco, 0, 999999999)) {
+				novoPreco = readDouble("Digite o Novo Preco do Produto: ");
+				if (!inRange(novoPreco, 0, 999999999)) printColor("Digite um preco valido.", RED);
+			}
+			p.setPreco(novoPreco);
+		}
+	}
+	//Listagem final
+	listProds(prodList);
+	
+}
+
+// Methods
+static void listProds(List<Produto> prodList) {
+	clear(50);
+	int listCounter = 0;
+	for (Produto p : prodList) {
+		listCounter++;
+		String msgTitle = "Produto " + listCounter;
+		title(msgTitle, CYAN);
+		printColor(String.valueOf(p));
+		line('#', 70, YELLOW);
 	}
 }
 

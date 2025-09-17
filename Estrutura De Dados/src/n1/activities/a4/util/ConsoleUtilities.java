@@ -23,6 +23,13 @@ private static final Scanner sc = new Scanner(System.in);
 // =========================
 // PRINT UTILITIES
 // =========================
+public static void clear(int lineNumber) {
+	for (int i = 0; i < lineNumber; i++) {
+		System.out.println();
+	}
+	
+}
+
 public static void printColor(String msg) {
 	printColor(msg, WHITE);
 }
