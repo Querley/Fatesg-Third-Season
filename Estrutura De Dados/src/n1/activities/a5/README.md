@@ -2,6 +2,7 @@
 
 Este repositório contém exercícios de Estrutura de Dados utilizando o conceito de Fila (Queue) em Java, com foco em simulações de atendimento, produção e gerenciamento sequencial de dados.
 
+<img width="890" height="270" alt="image" src="https://github.com/user-attachments/assets/2efe6a98-4587-4cfa-a861-aa05416d7164" />
 
 ## Exercícios
 
