@@ -3,7 +3,8 @@
 Este repositório contém um sistema simples de **cadastro de produtos**, desenvolvido em **Java** utilizando o padrão **MVC (Model–View–Controller)**.  
 O sistema permite cadastrar, listar, exibir detalhes e excluir produtos, mantendo a separação entre as camadas de dados, interface e controle.
 
-add image here.
+<img width="1094" height="326" alt="image" src="https://github.com/user-attachments/assets/4951254f-d2b3-4332-b33a-45bb407964e6" />
+
 ---
 
 ## Estrutura do Projeto
