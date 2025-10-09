@@ -3,6 +3,8 @@
 Este repositório contém um sistema simples de pedidos para uma loja online, desenvolvido em Java. O sistema permite cadastro de produtos e clientes, processamento de pedidos, geração de faturas e envio de notificações.  
 O código foi refatorado para aplicar corretamente os **cinco princípios do SOLID**, garantindo maior modularidade, manutenibilidade e facilidade de expansão.
 
+<img width="886" height="267" alt="image" src="https://github.com/user-attachments/assets/85e0260d-fbcb-467e-ba2e-1cb222c7cbda" />
+
 ---
 
 ## Estrutura do Projeto
