@@ -4,7 +4,8 @@ Este projeto contém exercícios em Java voltados à prática de **pilhas (Stack
 Cada programa foi feito de forma **simples e objetiva**, aplicando a pilha em diferentes contextos e resolvendo problemas clássicos de estrutura de dados.
 
 
-add image here.
+<img width="709" height="217" alt="image" src="https://github.com/user-attachments/assets/54750f99-02df-49fa-afc9-9b7803025e93" />
+
 ---
 
 ## Exercícios
