@@ -4,7 +4,8 @@ Este projeto contém diversos exercícios em Java que exploram o uso de **matriz
 Os códigos foram feitos de forma **simples e modular**, com foco em clareza e prática dos conceitos fundamentais de **loops aninhados** e **armazenamento em 2D**.
 
 
-add image here.
+<img width="709" height="217" alt="image" src="https://github.com/user-attachments/assets/89ef63ea-94a6-43ed-ab9c-2a17c1ec6625" />
+
 ---
 
 ## Exercícios
