@@ -1,4 +1,4 @@
-package n1.activities.a2.util;
+package n2.activities.util;
 
 import java.util.Scanner;
 
@@ -34,12 +34,12 @@ public static void printColor(String msg, String color) {
 public static void line() {
 	line(WHITE);
 }
-public static void clear(int number){
-	for (int i = 0; i < number; i++) {
+
+public static void clear(int count){
+	for (int i = 0; i < count; i++) {
 		System.out.println();
 	}
 }
-
 public static void line(String color) {
 	System.out.println(color + "----------------------------------------" + RESET);
 }
