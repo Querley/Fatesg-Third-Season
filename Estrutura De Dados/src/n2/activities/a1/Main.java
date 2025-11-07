@@ -58,6 +58,10 @@ public static void bubbleSort(){
 			for (int x : a) System.out.print(x + " ");
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> b01eb9319bf18ae885d32386337cca03e71998ab
 
 
